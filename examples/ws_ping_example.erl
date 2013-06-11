@@ -13,7 +13,7 @@
 start_link() ->
     crypto:start(),
     ssl:start(),
-    websocket_client:start_link("wss://echo.websocket.org", ?MODULE, []).
+    websocket_client:start_link("ws://localhost:8085/ws", ?MODULE, []).
 
 init([], _ConnState) ->
     websocket_client:cast(self(), {text, <<"message 1">>}),
