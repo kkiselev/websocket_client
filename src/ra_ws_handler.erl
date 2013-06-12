@@ -63,7 +63,7 @@ websocket_handle({pong, _}, _ConnState, State) ->
 websocket_handle({text, Msg}, _ConnState, State) ->
 	LastStartTime = State#state.last_request_start,
     ra_ws_monitor:complete_request(self(), ms_from_time(LastStartTime)),
-    timer:sleep(5000),
+    timer:sleep(5000 + random:uniform(2000)),
     BinInt = list_to_binary(integer_to_list(State)),
     Message = create_new_message(),
     ra_ws_monitor:start_request(self()),
