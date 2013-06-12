@@ -37,7 +37,7 @@ client_spec() ->
 init(_Args) ->
 	{ok, 
 		{
-			{simple_one_for_one, 100, 1},
+			{simple_one_for_one, 10000000, 60},
 			[client_spec()]
 		}
 	}.
